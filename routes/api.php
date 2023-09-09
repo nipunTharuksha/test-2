@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductCrudController;
+use App\Http\Controllers\ProductImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::patch('{productId}/image',[\App\Http\Controllers\ProductImageController::class,'uploadAImageForAProduct']);
+Route::post(
+    'products/{productId}/image',
+    [ProductImageController::class, 'uploadAImageForAProduct']
+);
 Route::apiResource('products', ProductCrudController::class);

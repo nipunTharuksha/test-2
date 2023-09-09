@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::patch('{productId}/image',[\App\Http\Controllers\ProductImageController::class,'uploadAImageForAProduct']);
 Route::apiResource('products', ProductCrudController::class);
